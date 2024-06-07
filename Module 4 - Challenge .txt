@@ -1,0 +1,454 @@
+Module 4 - Challenge 
+
+Part I
+1)  Columns in client_data.csv
+['first', 'last', 'job', 'phone', 'email', 'client_id', 'order_id', 'order_date', 'order_week', 'order_year', 'item_id', 'category', 'subcategory', 'unit_price', 'unit_cost', 'unit_weight', 'qty', 'line_number']
+
+
+Columns in file: first, last, job, phone, email, client_id, order_id, order_date, order_week, order_year, item_id, category,
+                 subcategory, unit_price, unit_cost, unit_weight, qty, line_number
+
+
+count: The number of non-NA/null entries.
+mean: The mean (average) value.
+std: The standard deviation.
+min: The minimum value.
+25%: The 25th percentile.
+50%: The 50th percentile (median).
+75%: The 75th percentile.
+max: The maximum value.
+
+
+
+
+2) # Use the describe function to gather some basic statistics
+description = wholesale_df.describe()
+
+print(description)
+
+          client_id      order_id    order_week    order_year    unit_price  \
+count  54639.000000  5.463900e+04  54639.000000  54639.000000  54639.000000   
+mean   54837.869416  5.470190e+06     11.359139   2022.993064    136.267207   
+std    25487.438231  2.599807e+06      7.023499      0.082997    183.873135   
+min    10033.000000  1.000886e+06      1.000000   2022.000000      0.010000   
+25%    33593.000000  3.196372e+06      6.000000   2023.000000     20.800000   
+50%    53305.000000  5.496966e+06     11.000000   2023.000000     68.310000   
+75%    78498.000000  7.733869e+06     17.000000   2023.000000    173.160000   
+max    99984.000000  9.998480e+06     52.000000   2023.000000   1396.230000   
+
+          unit_cost   unit_weight           qty   line_number  
+count  54639.000000  54639.000000  5.463900e+04  54639.000000  
+mean      99.446073      5.004116  5.702646e+02      2.979667  
+std      133.164267      5.326599  1.879552e+04      2.436320  
+min        0.010000      0.000000  0.000000e+00      0.000000  
+25%       14.840000      1.450000  3.200000e+01      1.000000  
+50%       49.890000      3.240000  6.800000e+01      3.000000  
+75%      125.570000      6.890000  1.700000e+02      5.000000  
+max      846.270000     46.430000  3.958244e+06      9.000000  
+
+3) # Use this space to do any additional research
+# and familiarize yourself with the data.
+description = wholesale_df.describe(include='all')
+print(description)
+
+              first     last        job       phone                     email  \
+count         54639    54639      54639       54639                     54639   
+unique          360      477        498         999                       999   
+top     Christopher  Johnson  Osteopath  5016915923  jessica.reyes@grimes.net   
+freq           1090     1164        631         220                       220   
+mean            NaN      NaN        NaN         NaN                       NaN   
+std             NaN      NaN        NaN         NaN                       NaN   
+min             NaN      NaN        NaN         NaN                       NaN   
+25%             NaN      NaN        NaN         NaN                       NaN   
+50%             NaN      NaN        NaN         NaN                       NaN   
+75%             NaN      NaN        NaN         NaN                       NaN   
+max             NaN      NaN        NaN         NaN                       NaN   
+
+           client_id      order_id  order_date    order_week    order_year  \
+count   54639.000000  5.463900e+04       54639  54639.000000  54639.000000   
+unique           NaN           NaN         150           NaN           NaN   
+top              NaN           NaN  2023-04-19           NaN           NaN   
+freq             NaN           NaN         538           NaN           NaN   
+mean    54837.869416  5.470190e+06         NaN     11.359139   2022.993064   
+std     25487.438231  2.599807e+06         NaN      7.023499      0.082997   
+min     10033.000000  1.000886e+06         NaN      1.000000   2022.000000   
+25%     33593.000000  3.196372e+06         NaN      6.000000   2023.000000   
+50%     53305.000000  5.496966e+06         NaN     11.000000   2023.000000   
+75%     78498.000000  7.733869e+06         NaN     17.000000   2023.000000   
+max     99984.000000  9.998480e+06         NaN     52.000000   2023.000000   
+
+               item_id     category        subcategory    unit_price  \
+count            54639        54639              54639  54639.000000   
+unique             500            5                 18           NaN   
+top     MAZ00314-80-8M  consumables  bathroom supplies           NaN   
+freq               148        23538               6424           NaN   
+mean               NaN          NaN                NaN    136.267207   
+std                NaN          NaN                NaN    183.873135   
+min                NaN          NaN                NaN      0.010000   
+25%                NaN          NaN                NaN     20.800000   
+50%                NaN          NaN                NaN     68.310000   
+75%                NaN          NaN                NaN    173.160000   
+max                NaN          NaN                NaN   1396.230000   
+
+           unit_cost   unit_weight           qty   line_number  
+count   54639.000000  54639.000000  5.463900e+04  54639.000000  
+unique           NaN           NaN           NaN           NaN  
+top              NaN           NaN           NaN           NaN  
+freq             NaN           NaN           NaN           NaN  
+mean       99.446073      5.004116  5.702646e+02      2.979667  
+std       133.164267      5.326599  1.879552e+04      2.436320  
+min         0.010000      0.000000  0.000000e+00      0.000000  
+25%        14.840000      1.450000  3.200000e+01      1.000000  
+50%        49.890000      3.240000  6.800000e+01      3.000000  
+75%       125.570000      6.890000  1.700000e+02      5.000000  
+max       846.270000     46.430000  3.958244e+06      9.000000  
+
+4) To find out the shape of a CSV file, you can use the pandas library in Python. The shape of a DataFrame refers to its dimensions in terms of the number of rows and columns.
+
+shape = wholesale_df.shape
+
+print(shape)
+
+Output
+(54639, 18)
+
+5) # What three item categories had the most entries?
+category_counts = wholesale_df['category'].value_counts()
+
+# Get the top 3 categories with the most entries
+top_3_categories = category_counts.head(3)
+
+print(top_3_categories)
+
+category
+consumables    23538
+furniture      11915
+software        8400
+Name: count, dtype: int64
+
+
+6) # For the category with the most entries, which subcategory had the most entries?
+
+# Find the category with the most entries
+most_common_category = wholesale_df['category'].value_counts().idxmax()
+
+# Filter the DataFrame to only include rows with the most common category
+filtered_df = wholesale_df[wholesale_df['category'] == most_common_category]
+
+# Find the subcategory with the most entries within the most common category
+most_common_subcategory = filtered_df['subcategory'].value_counts().idxmax()
+
+print(f"The category with the most entries is: {most_common_category}")
+print(f"The subcategory with the most entries within {most_common_category} is: {most_common_subcategory}")
+
+The category with the most entries is: consumables
+The subcategory with the most entries within consumables is: bathroom supplies
+
+7)# Which five clients had the most entries in the data?
+
+# Get the counts of each client_id
+client_id_counts = wholesale_df['client_id'].value_counts()
+
+# Get the top 5 client_ids with the most entries and their counts
+top_5_client_ids = client_id_counts.head(5)
+
+print("The five client_ids with the most entries and their counts are:")
+print(top_5_client_ids)
+
+The five client_ids with the most entries and their counts are:
+client_id
+33615    220
+66037    211
+46820    209
+38378    207
+24741    207
+Name: count, dtype: int64
+
+8) # Store the client ids of those top 5 clients in a list.
+top_5_client_ids_list = top_5_client_ids.index.tolist()
+
+print("The list of the top 5 client_ids with the most entries:")
+print(top_5_client_ids_list)
+
+The list of the top 5 client_ids with the most entries:
+[33615, 66037, 46820, 38378, 24741]
+
+
+9)# How many total units (the qty column) did the client with the most entries order order?
+
+# Get the counts of each client_id
+client_id_counts = wholesale_df['client_id'].value_counts()
+
+# Find the client_id with the most entries
+top_client_id = client_id_counts.idxmax()
+
+# Filter the DataFrame to only include rows with the top client_id
+top_client_df = wholesale_df[wholesale_df['client_id'] == top_client_id]
+
+# Sort the entries for the top client_id by the "qty" column
+sorted_top_client_df = top_client_df.sort_values(by='qty', ascending=False)
+
+# Calculate the total quantity ordered for the top client_id
+total_qty = top_client_df['qty'].sum()
+
+print(f"Entries for the client_id {top_client_id} ordered by 'qty':")
+for index, row in sorted_top_client_df.iterrows():
+    print(f"Date: {row['order_date']}, Quantity: {row['qty']}")
+
+print(f"Total quantity ordered for client_id {top_client_id}: {total_qty}")
+
+Entries for the client_id 33615 ordered by 'qty':
+Date: 2023-05-24, Quantity: 17750
+Date: 2023-04-29, Quantity: 4402
+Date: 2023-03-05, Quantity: 3425
+Date: 2023-05-02, Quantity: 2986
+Date: 2023-03-08, Quantity: 1848
+Date: 2023-02-10, Quantity: 1570
+Date: 2023-01-22, Quantity: 1425
+Date: 2023-01-10, Quantity: 1380
+Date: 2023-05-30, Quantity: 1309
+Date: 2023-02-25, Quantity: 1250
+Date: 2023-03-05, Quantity: 1189
+Date: 2023-04-10, Quantity: 1120
+Date: 2023-04-12, Quantity: 1048
+Date: 2023-04-19, Quantity: 967
+Date: 2023-04-10, Quantity: 930
+Date: 2023-01-10, Quantity: 777
+Date: 2023-02-24, Quantity: 704
+Date: 2023-05-16, Quantity: 686
+Date: 2023-03-08, Quantity: 663
+Date: 2023-01-27, Quantity: 656
+Date: 2023-02-12, Quantity: 633
+Date: 2023-05-30, Quantity: 602
+Date: 2023-05-16, Quantity: 568
+Date: 2023-01-22, Quantity: 547
+Date: 2023-02-15, Quantity: 508
+Date: 2023-05-01, Quantity: 431
+Date: 2023-04-25, Quantity: 415
+Date: 2023-02-25, Quantity: 325
+Date: 2023-04-10, Quantity: 306
+Date: 2023-04-29, Quantity: 299
+Date: 2023-02-23, Quantity: 282
+Date: 2023-05-10, Quantity: 273
+Date: 2023-04-10, Quantity: 261
+Date: 2023-05-24, Quantity: 257
+Date: 2023-02-09, Quantity: 237
+Date: 2023-03-04, Quantity: 235
+Date: 2023-03-04, Quantity: 229
+Date: 2023-03-03, Quantity: 226
+Date: 2023-03-05, Quantity: 219
+Date: 2023-05-22, Quantity: 219
+Date: 2023-05-10, Quantity: 217
+Date: 2023-01-10, Quantity: 197
+Date: 2023-05-01, Quantity: 194
+Date: 2023-04-25, Quantity: 187
+Date: 2023-01-27, Quantity: 179
+Date: 2023-02-23, Quantity: 173
+Date: 2023-04-07, Quantity: 163
+Date: 2023-01-03, Quantity: 158
+Date: 2023-05-30, Quantity: 158
+Date: 2023-04-20, Quantity: 156
+Date: 2023-04-19, Quantity: 153
+Date: 2023-03-14, Quantity: 152
+Date: 2023-02-15, Quantity: 151
+Date: 2023-01-27, Quantity: 151
+Date: 2023-02-21, Quantity: 145
+Date: 2023-04-19, Quantity: 142
+Date: 2023-03-05, Quantity: 140
+Date: 2023-04-25, Quantity: 138
+Date: 2023-05-16, Quantity: 130
+Date: 2023-04-07, Quantity: 130
+Date: 2023-04-07, Quantity: 128
+Date: 2023-05-22, Quantity: 126
+Date: 2023-05-30, Quantity: 125
+Date: 2023-02-10, Quantity: 125
+Date: 2023-02-15, Quantity: 122
+Date: 2023-02-25, Quantity: 122
+Date: 2023-02-15, Quantity: 121
+Date: 2023-05-28, Quantity: 120
+Date: 2023-01-14, Quantity: 113
+Date: 2023-02-25, Quantity: 113
+Date: 2023-05-28, Quantity: 110
+Date: 2023-02-10, Quantity: 106
+Date: 2023-04-29, Quantity: 103
+Date: 2023-04-10, Quantity: 102
+Date: 2023-02-23, Quantity: 100
+Date: 2023-05-02, Quantity: 99
+Date: 2023-04-25, Quantity: 98
+Date: 2023-03-05, Quantity: 97
+Date: 2023-01-10, Quantity: 95
+Date: 2023-03-15, Quantity: 91
+Date: 2023-04-25, Quantity: 89
+Date: 2023-05-14, Quantity: 88
+Date: 2023-04-25, Quantity: 87
+Date: 2023-05-28, Quantity: 87
+Date: 2023-01-22, Quantity: 86
+Date: 2023-01-27, Quantity: 84
+Date: 2023-04-20, Quantity: 84
+Date: 2023-01-10, Quantity: 83
+Date: 2023-05-22, Quantity: 83
+Date: 2023-01-04, Quantity: 79
+Date: 2023-03-14, Quantity: 78
+Date: 2023-05-02, Quantity: 78
+Date: 2023-02-15, Quantity: 78
+Date: 2023-05-22, Quantity: 77
+Date: 2023-05-02, Quantity: 73
+Date: 2023-02-24, Quantity: 73
+Date: 2023-05-28, Quantity: 71
+Date: 2023-05-24, Quantity: 70
+Date: 2023-05-30, Quantity: 70
+Date: 2023-01-03, Quantity: 70
+Date: 2023-02-25, Quantity: 66
+Date: 2023-05-02, Quantity: 65
+Date: 2023-01-03, Quantity: 64
+Date: 2023-01-27, Quantity: 64
+Date: 2023-04-25, Quantity: 64
+Date: 2023-02-15, Quantity: 63
+Date: 2023-05-30, Quantity: 61
+Date: 2023-05-24, Quantity: 61
+Date: 2023-05-01, Quantity: 61
+Date: 2023-02-23, Quantity: 60
+Date: 2023-02-10, Quantity: 58
+Date: 2023-04-19, Quantity: 58
+Date: 2023-04-10, Quantity: 56
+Date: 2023-04-19, Quantity: 54
+Date: 2023-01-27, Quantity: 53
+Date: 2023-05-22, Quantity: 53
+Date: 2023-02-15, Quantity: 52
+Date: 2023-05-24, Quantity: 52
+Date: 2023-04-20, Quantity: 51
+Date: 2023-01-03, Quantity: 51
+Date: 2023-04-19, Quantity: 50
+Date: 2023-05-22, Quantity: 50
+Date: 2023-01-22, Quantity: 50
+Date: 2023-04-19, Quantity: 49
+Date: 2023-04-20, Quantity: 49
+Date: 2023-02-09, Quantity: 49
+Date: 2023-04-20, Quantity: 49
+Date: 2023-01-27, Quantity: 49
+Date: 2023-05-28, Quantity: 48
+Date: 2023-02-23, Quantity: 48
+Date: 2023-01-03, Quantity: 47
+Date: 2023-02-21, Quantity: 47
+Date: 2023-04-10, Quantity: 47
+Date: 2023-04-29, Quantity: 46
+Date: 2023-03-15, Quantity: 46
+Date: 2023-02-09, Quantity: 43
+Date: 2023-05-16, Quantity: 43
+Date: 2023-05-24, Quantity: 43
+Date: 2023-03-03, Quantity: 43
+Date: 2023-05-01, Quantity: 41
+Date: 2023-05-24, Quantity: 41
+Date: 2023-02-23, Quantity: 41
+Date: 2023-02-15, Quantity: 40
+Date: 2023-02-25, Quantity: 39
+Date: 2023-05-24, Quantity: 38
+Date: 2023-05-30, Quantity: 38
+Date: 2023-03-15, Quantity: 38
+Date: 2023-04-10, Quantity: 37
+Date: 2023-01-22, Quantity: 37
+Date: 2023-04-25, Quantity: 36
+Date: 2023-02-15, Quantity: 36
+Date: 2023-02-15, Quantity: 36
+Date: 2023-02-15, Quantity: 36
+Date: 2023-02-21, Quantity: 36
+Date: 2023-02-24, Quantity: 35
+Date: 2023-02-10, Quantity: 34
+Date: 2023-03-04, Quantity: 34
+Date: 2023-05-22, Quantity: 34
+Date: 2023-02-09, Quantity: 33
+Date: 2023-05-16, Quantity: 33
+Date: 2023-02-10, Quantity: 32
+Date: 2023-01-27, Quantity: 32
+Date: 2023-04-10, Quantity: 32
+Date: 2023-01-03, Quantity: 32
+Date: 2023-02-23, Quantity: 31
+Date: 2023-02-15, Quantity: 31
+Date: 2023-02-12, Quantity: 31
+Date: 2023-02-24, Quantity: 31
+Date: 2023-01-03, Quantity: 30
+Date: 2023-04-20, Quantity: 30
+Date: 2023-03-05, Quantity: 30
+Date: 2023-03-14, Quantity: 29
+Date: 2023-05-10, Quantity: 29
+Date: 2023-03-05, Quantity: 28
+Date: 2023-04-07, Quantity: 28
+Date: 2023-01-27, Quantity: 28
+Date: 2023-02-25, Quantity: 27
+Date: 2023-05-22, Quantity: 27
+Date: 2023-01-10, Quantity: 26
+Date: 2023-05-28, Quantity: 26
+Date: 2023-05-24, Quantity: 26
+Date: 2023-05-10, Quantity: 25
+Date: 2023-02-23, Quantity: 25
+Date: 2023-02-25, Quantity: 25
+Date: 2023-04-10, Quantity: 24
+Date: 2023-01-22, Quantity: 23
+Date: 2023-02-15, Quantity: 22
+Date: 2023-02-10, Quantity: 22
+Date: 2023-02-10, Quantity: 22
+Date: 2023-04-29, Quantity: 22
+Date: 2023-02-15, Quantity: 22
+Date: 2023-01-27, Quantity: 21
+Date: 2023-01-03, Quantity: 21
+Date: 2023-01-03, Quantity: 20
+Date: 2023-03-04, Quantity: 20
+Date: 2023-04-20, Quantity: 20
+Date: 2023-04-19, Quantity: 19
+Date: 2023-02-15, Quantity: 19
+Date: 2023-02-24, Quantity: 18
+Date: 2023-05-24, Quantity: 18
+Date: 2023-02-10, Quantity: 18
+Date: 2023-02-15, Quantity: 18
+Date: 2023-03-05, Quantity: 18
+Date: 2023-04-20, Quantity: 18
+Date: 2023-05-30, Quantity: 17
+Date: 2023-04-19, Quantity: 17
+Date: 2023-04-25, Quantity: 17
+Date: 2023-05-10, Quantity: 17
+Date: 2023-02-10, Quantity: 16
+Date: 2023-01-22, Quantity: 16
+Date: 2023-02-15, Quantity: 15
+Date: 2023-04-10, Quantity: 15
+Date: 2023-02-24, Quantity: 15
+Date: 2023-05-30, Quantity: 12
+Date: 2023-04-25, Quantity: 10
+Date: 2023-04-12, Quantity: 10
+Date: 2023-04-29, Quantity: 9
+Date: 2023-02-25, Quantity: 9
+Date: 2023-01-22, Quantity: 8
+Date: 2023-04-19, Quantity: 3
+Total quantity ordered for client_id 33615: 64313
+
+10)#To check for null values in any column
+columns_with_null = wholesale_df.columns[wholesale_df.isnull().any()].tolist()
+
+if columns_with_null:
+    print("Columns with null values:")
+    for column in columns_with_null:
+        print(column)
+else:
+    print("No columns have null values.")
+Output
+No columns have null values.
+
+11) # Replace empty strings with NaN values
+df.replace('', pd.NA, inplace=True)
+
+# Check for NaN values in each column
+columns_with_blanks = df.columns[df.isna().any()].tolist()
+
+if columns_with_blanks:
+    print("Columns with blanks:")
+    for column in columns_with_blanks:
+        print(column)
+else:
+    print("No columns have blanks.")
+
+No columns have blanks.
+
+
+
+
+
+
